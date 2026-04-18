@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System | Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="garage-bg hub-page">
+    <div class="garage-lights" aria-hidden="true"></div>
+
+    <div class="hub">
+        <h1>Smart Parking Hub</h1>
+        <p id="welcome">Welcome, Admin</p>
+
+        <div class="menu">
+            <a href="prebooking.html" class="btn prebook">
+                <span class="icon-chip">&#128663;&#128663;</span>
+                <span class="btn-text-wrap">
+                    <span class="btn-title">Our Services and Pre-booking</span>
+                    <small class="btn-subtext">Book for Bangalore, Chennai and more</small>
+                </span>
+            </a>
+
+            <a href="entry.html" class="btn entry">
+                <span class="icon-chip">&#128994;</span>
+                <span class="btn-title">Vehicle Entry</span>
+            </a>
+            <a href="exit.html" class="btn exit">
+                <span class="icon-chip">&#128308;</span>
+                <span class="btn-title">Vehicle Exit</span>
+            </a>
+
+            <a href="dashboard.html" class="btn dash">
+                <span class="icon-chip">&#128202;</span>
+                <span class="btn-title">Live Dashboard Monitor</span>
+            </a>
+
+            <a href="reports.html" class="btn reports">
+                <span class="icon-chip">&#128196;</span>
+                <span class="btn-title">Reports and CSV Export</span>
+            </a>
+
+            <button onclick="logout()" class="btn logout-btn">
+                <span class="icon-chip">&#10162;</span>
+                <span class="btn-title">Logout</span>
+            </button>
+        </div>
+
+        <p class="backend-status">Backend Status: <span class="backend-ok">&#10004; Connected</span></p>
+    </div>
+
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+
+        const user = localStorage.getItem("user");
+        if (user) {
+            document.getElementById("welcome").innerText = "Welcome back, " + user + "!";
+        }
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
